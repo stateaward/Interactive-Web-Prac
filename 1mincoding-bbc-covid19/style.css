@@ -1,0 +1,105 @@
+html {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+body {
+	margin: 0;
+}
+div, section, header, footer, p, h1, h2 {
+	box-sizing: border-box;
+}
+a {
+	color: royalblue;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.global-width{
+	max-width: 620px;
+	/* 좌우 마진 auto로 해서 센터 맞추기 */
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.graphic-item{
+	/* 이미지를 브라우저의 가운데 나오도록 하기 위해 */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	width: 100%;
+	height: 100%;
+
+	opacity: 0;
+	transition: 0.5s;
+
+	/* 값이 변한다는 것을 미리 브라우저에 말하고 준비시킴 -> 좀더 빠르게 처리 | 남발하면 느려짐 */
+	will-change: opacity;
+}
+
+.visible{
+	opacity: 1;
+}
+
+/* 통째로 그림을 감싸는 녀석 */
+.scroll-graphic{
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	/* 새가 날라갈 때, 멀리 날라가서 스크롤이 생김 -> 그거 방지 */
+	overflow: hidden;
+}
+
+.scene-img{
+	max-height: 100vh;
+}
+
+.scroll-text{
+	/* static이 기본값,
+	   포지션이 기본값이 아니면 z-index를 가지고 있고
+	   그 값마저 지정을 안하면, 코드 아래에 위치한 엘리먼트의 인덱스가 더 높아짐 */
+	position: relative;
+	padding-bottom: 1px;
+}
+
+.step{
+	margin-bottom: 60vh;
+	padding: 0.5rem 1rem;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,0.8);
+	box-shadow: rgba(0,0,0,0.3) 0 0 3px;
+}
+
+.bird{
+	position: absolute;
+	left:0;
+	bottom: 70%;
+	width: 100px;
+
+	/* 기본적으로 transition은 가속도가 있음 */
+	/* 1.5s 0.5s linear : 0.5초 있다가, 1.5초동안 가속도 없이 재생 */
+	/* 재생시간, 지연시간,  */
+	transition: 1.5s 0.5s linear;
+
+	/* 퍼센트를 쓰면 내 자신의 크기. 자신 크기만큼 바깥으로 나가있는 상태 */
+	transform: translateX(-100%);
+}
+
+[data-index="5"] .bird{
+	left: 30%;
+	bottom: 30%;
+}
+
+.global-footer{
+	padding: 2rem 0;
+	text-align: center;
+}
+
+.strikethrough {
+	text-decoration: line-through;
+}
